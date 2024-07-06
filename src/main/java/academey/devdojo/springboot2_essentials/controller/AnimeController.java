@@ -1,8 +1,8 @@
 package academey.devdojo.springboot2_essentials.controller;
 
 import academey.devdojo.springboot2_essentials.domain.Anime;
-import academey.devdojo.springboot2_essentials.requests.AnimePostRequestBodyRecord;
-import academey.devdojo.springboot2_essentials.requests.AnimePutRequestBodyRecord;
+import academey.devdojo.springboot2_essentials.requests.AnimePostRequestBody;
+import academey.devdojo.springboot2_essentials.requests.AnimePutRequestBody;
 import academey.devdojo.springboot2_essentials.service.AnimeService;
 import academey.devdojo.springboot2_essentials.util.DateUtil;
 import lombok.RequiredArgsConstructor;
@@ -34,9 +34,8 @@ public class AnimeController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Anime> save(@RequestBody AnimePostRequestBodyRecord animePostRequestBodyRecord){
-        return new ResponseEntity<>(animeService.save(animePostRequestBodyRecord), HttpStatus.CREATED);
+    public ResponseEntity<Anime> save(@RequestBody AnimePostRequestBody animePostRequestBody){
+        return new ResponseEntity<>(animeService.save(animePostRequestBody), HttpStatus.CREATED);
     }
 
     @DeleteMapping(path = "/{id}")
@@ -46,8 +45,8 @@ public class AnimeController {
     }
 
     @PutMapping
-    public ResponseEntity<Void> replace(@RequestBody AnimePutRequestBodyRecord animePutRequestBodyRecord) {
-        animeService.replace(animePutRequestBodyRecord);
+    public ResponseEntity<Void> replace(@RequestBody AnimePutRequestBody animePutRequestBody) {
+        animeService.replace(animePutRequestBody);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
