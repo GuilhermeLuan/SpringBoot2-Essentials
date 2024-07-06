@@ -1,6 +1,7 @@
 package academey.devdojo.springboot2_essentials.service;
 
 import academey.devdojo.springboot2_essentials.domain.Anime;
+import academey.devdojo.springboot2_essentials.exception.BadRequestException;
 import academey.devdojo.springboot2_essentials.mapper.AnimeMapper;
 import academey.devdojo.springboot2_essentials.repository.AnimeRepository;
 import academey.devdojo.springboot2_essentials.requests.AnimePostRequestBody;
@@ -28,7 +29,7 @@ public class AnimeService {
 
     public Anime findByIdOrThrowBadRequestException(long id) {
         return animeRepository.findById(id).
-                orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Anime not Found"));
+                orElseThrow(() -> new BadRequestException("Anime not Found"));
     }
 
     public Anime save(AnimePostRequestBody animePostRequestBody) {
