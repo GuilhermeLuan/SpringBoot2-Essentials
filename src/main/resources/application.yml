@@ -10,6 +10,11 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  devtools:
+    restart:
+      enabled: false
+    livereload:
+      enabled: false
 logging:
   level:
     org:
