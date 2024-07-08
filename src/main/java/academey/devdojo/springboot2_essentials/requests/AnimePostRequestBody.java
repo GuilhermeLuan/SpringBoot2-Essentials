@@ -1,4 +1,10 @@
 package academey.devdojo.springboot2_essentials.requests;
 
-public record AnimePostRequestBody ( String name) {
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+
+public record AnimePostRequestBody(
+        @NotEmpty(message = "The anime name cannot be empty")
+        @NotBlank(message = "The anime name cannot be blank")
+        String name) {
 }
