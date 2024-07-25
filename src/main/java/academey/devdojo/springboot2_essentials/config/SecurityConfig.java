@@ -33,6 +33,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(requests -> requests
+                        .requestMatchers("/animes/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/animes/**").hasAnyRole("ADMIN", "USER")
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
