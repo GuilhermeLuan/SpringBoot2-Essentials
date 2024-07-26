@@ -20,3 +20,18 @@ logging:
     org:
       hibernate:
         SQL: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, health, metrics, prometheus
+info:
+  app:
+    encoding: "@project.build.sourceEncoding@"
+    java:
+      source: "@java.version@"
+      target: "@java.version@"
+  env:
+    enabled: true
+

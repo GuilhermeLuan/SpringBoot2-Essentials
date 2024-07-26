@@ -35,6 +35,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests(requests -> requests
                         .requestMatchers("/animes/admin/**").hasRole("ADMIN")
                         .requestMatchers("/animes/**").hasAnyRole("ADMIN", "USER")
+                        .requestMatchers("/actuator/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
